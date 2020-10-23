@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import Router from 'next/router';
-import useRequest from '../../hooks/use-request';
-import axios from 'axios';
+import { useRequest } from '../../hooks/use-request';
 
-export default () => {
+const signUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { doRequest, errors } = useRequest({
@@ -19,12 +18,7 @@ export default () => {
   const onSubmit = async event => {
     event.preventDefault();
 
-    // await doRequest();
-    const response = await axios.post('/api/users/signup', {
-      email, password
-    });
-
-    console.log(response.data)
+    await doRequest();
   };
 
   return (
@@ -52,3 +46,5 @@ export default () => {
     </form>
   );
 };
+
+export default signUp;

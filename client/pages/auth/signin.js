@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import Router from 'next/router';
-import useRequest from '../../hooks/use-request';
+import { useRequest } from '../../hooks/use-request';
 
-export default () => {
+const singIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { doRequest, errors } = useRequest({
@@ -22,7 +22,7 @@ export default () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className="mx-auto w-75" onSubmit={onSubmit}>
       <h1>Sign In</h1>
       <div className="form-group">
         <label>Email Address</label>
@@ -46,3 +46,5 @@ export default () => {
     </form>
   );
 };
+
+export default singIn;
